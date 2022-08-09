@@ -1367,5 +1367,29 @@
     "description": "Unsupported entity in drafty",
     "missing": false,
     "obsolete": false
+  },
+  "end_visit": {
+    "translation": "End Visit",
+    "defaultMessage": "End Visit",
+    "missing": false,
+    "obsolete": false
+  },
+  "temperament": {
+    "translation": "Temperament",
+    "defaultMessage": "Temperament",
+    "missing": false,
+    "obsolete": false
+  },
+  "treatment_history": {
+    "translation": "Treatment History",
+    "defaultMessage": "Treatment History",
+    "missing": false,
+    "obsolete": false
+  },
+  "visit_summary": {
+    "translation": "Visit Summary",
+    "defaultMessage": "Visit Summary",
+    "missing": false,
+    "obsolete": false
   }
 }

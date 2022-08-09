@@ -219,6 +219,9 @@
     "defaultMessage": "Enable",
     "description": "Call to action to enable peer's messaging"
   },
+  "end_visit": {
+    "defaultMessage": "End Visit"
+  },
   "enter_confirmation_code_prompt": {
     "defaultMessage": "Enter confirmation code sent to you by {method}:",
     "description": "Request to enter confirmation code"
@@ -720,6 +723,9 @@
     "defaultMessage": "No tags defined. Add some.",
     "description": ""
   },
+  "temperament": {
+    "defaultMessage": "Temperament"
+  },
   "title_all_contacts": {
     "defaultMessage": "All Contacts",
     "description": "Section title [All Contacts]"
@@ -760,6 +766,9 @@
     "defaultMessage": "Freeform name of the group",
     "description": "Prompt for entering topic name"
   },
+  "treatment_history": {
+    "defaultMessage": "Treatment History"
+  },
   "unnamed_topic": {
     "defaultMessage": "Unnamed",
     "description": "Title shown when the topic has no name"
@@ -779,5 +788,8 @@
   "validate_credential_action": {
     "defaultMessage": "confirm",
     "description": "Validate credentail call to action"
+  },
+  "visit_summary": {
+    "defaultMessage": "Visit Summary"
   }
 }

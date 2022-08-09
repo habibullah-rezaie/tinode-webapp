@@ -2733,6 +2733,60 @@ ul.tabbar li.active > a {
 	color: #666c;
 }
 
+.tabibBtns {
+	width: 100%;
+	background-color: white;
+	font-size: 0.75rem;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 0.5rem;
+	grid-auto-flow: column;
+	align-items: start;
+	list-style-type: none;
+	height: 6rem;
+	padding: 0.5rem 0;
+}
+
+.tabibBtns__item {
+	margin: 0.25rem 0;
+	padding: 0;
+	width: fit-content;
+	justify-self: center;
+}
+
+.tabibBtns__btn {
+	font-size: inherit;
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	box-shadow: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tabibBtns__btn:active {
+	box-shadow: none;
+}
+
+.tabibBtns__btn .tabibBtns__text {
+	color: #59b1c7;
+	font-weight: bold;
+}
+.tabibBtns__btn .tabibBtns__icon {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	border-radius: 100%;
+	background-color: #59b1c7;
+	color: white;
+	padding: 1rem !important;
+}
+
+.tabibBtns__icon {
+	font-size: 1rem;
+}
+
 /*
  Mobile styles.
  */
@@ -2768,6 +2822,30 @@ ul.tabbar li.active > a {
 	/* Must make it a bit visible on mobile because there is no :hover */
 	li .menuTrigger {
 		opacity: 0.3;
+	}
+}
+
+@media (max-width: 500px) {
+	.tabibBtns {
+		font-size: 0.7rem;
+		gap: 0.25rem;
+	}
+}
+
+@media (max-width: 375px) {
+	.tabibBtns {
+		gap: 0;
+	}
+
+	.tabibBtns__item {
+		justify-self: center;
+	}
+	.tabibBtns__text {
+		font-size: 0.6rem;
+	}
+
+	.tabibBtns__btn {
+		min-width: fit-content !important;
 	}
 }
 

@@ -56,7 +56,8 @@
 		"ro",
 		"ru",
 		"zh",
-		"zh-TW"
+		"zh-TW",
+		"fa"
 	],
 	"main": "umd/index.prod.js",
 	"bugs": {
