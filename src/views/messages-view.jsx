@@ -1457,7 +1457,8 @@ class MessagesView extends React.Component {
  * @param {formatMessage} Props props to this component only takes `formatMessage`
  * from `react-intl` props from parent
  * This is to make button texts be traslated to any language
- * For now I've added translations in `src/i18n/fa.json`
+ * For now I've added translations in `src/i18n/fa.json`, and also add `fa` short for Persian
+ * to `package.json` in the locales array, so that intl should automatically load persian messages
  * @returns
  */
 function TabibVisitButtons({ formatMessage }) {
