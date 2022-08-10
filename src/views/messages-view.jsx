@@ -1452,6 +1452,14 @@ class MessagesView extends React.Component {
 	}
 }
 
+/**
+ * Renders list of TabibVisit buttons
+ * @param {formatMessage} Props props to this component only takes `formatMessage`
+ * from `react-intl` props from parent
+ * This is to make button texts be traslated to any language
+ * For now I've added translations in `src/i18n/fa.json`
+ * @returns
+ */
 function TabibVisitButtons({ formatMessage }) {
 	return (
 		<div style={{ width: "100%" }}>
@@ -1486,8 +1494,15 @@ function TabibVisitButtons({ formatMessage }) {
 	);
 }
 
+/**
+ * Repersents a single TabibVisit button
+ * @param {{title: String, Icon: JSX.Element}} Props The title is text of the button and
+ * the Icon is the a react-icon component serving as an icon
+ * @returns
+ */
 function TabibVisitBtn({ title, Icon }) {
 	return (
+		// Also use title for accessiblity purpose
 		<button className="tabibBtns__btn" aria-label={title}>
 			<div className="tabibBtns__icon">
 				<Icon title={title} />
