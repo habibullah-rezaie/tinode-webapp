@@ -276,7 +276,11 @@ export default class AudioPlayer extends React.PureComponent {
 		const play = (
 			<a href="#" onClick={this.handlePlay} title="Play">
 				<i className={playClass}>
-					{/* render a loading spinner */}
+					{/* 
+						If this props is given render a spinner instead of the play button
+
+						This is the only change that I've brought to audio player
+					*/}
 					{this.props.audioLoading ? (
 						<FaSpinner className="spinner" />
 					) : this.state.playing ? (

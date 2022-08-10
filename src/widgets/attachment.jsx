@@ -1,4 +1,13 @@
 /* eslint-disable react/prop-types */
+/*
+ * CHANGES THAT I'VE BROUGHT
+ * 1. add a new prop to Attachment: att
+ * this props contains metadata about the attachments
+ *
+ * 2. Check if mimetype of the file is and audio it renders
+ * an audio player and prepares a preview
+ */
+
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -14,7 +23,6 @@ const VISUALIZATION_BARS = 96;
 // Maximum number of samples per bar.
 const MAX_SAMPLES_PER_BAR = 10;
 
-// The changes brought here are to show an audio player when the attachment is an audio file
 export default class Attachment extends React.Component {
 	constructor(props) {
 		super(props);
@@ -22,25 +30,36 @@ export default class Attachment extends React.Component {
 		this.state = {
 			downloader: null,
 			progress: 0,
+
+			// This the duration of the audio
 			duration: null,
+
+			// This the preview. those bars
 			preview: null,
+
+			// This the src or the url, the src of a playable audio
 			src: "",
+
+			// This prop shows if the url and preview are ready
 			preparingAudio: false,
 		};
 
 		this.audioContext = new AudioContext();
 		this.downloadFile = this.downloadFile.bind(this);
 		this.handleCancel = this.handleCancel.bind(this);
-		this.getRecording = this.getRecording.bind(this);
+		this.getRecording = this.getAudio.bind(this);
 		this.getDuration = this.getDuration.bind(this);
 		this.createPreview = this.createPreview.bind(this);
 	}
 
 	componentDidMount() {
+		/* Here check if the attachment file is and audio file
+		 *  if yes, then prepare the url and preview
+		 */
 		if (this.props.att?.mime.includes("audio")) {
 			this.setState({ preparingAudio: true });
 			if (!this.state.url || !this.state.preview) {
-				this.getRecording()
+				this.getAudio()
 					.then(({ url, preview }) => {
 						this.getDuration(url).then((duration) => {
 							duration = duration * 1000;
@@ -54,6 +73,7 @@ export default class Attachment extends React.Component {
 		}
 	}
 
+	// Gets the duration of the audio
 	getDuration(url) {
 		return new Promise((resolve) => {
 			const audio = new Audio(url);
@@ -61,10 +81,11 @@ export default class Attachment extends React.Component {
 		});
 	}
 
-	// Obtain data in a form sutable for sending or playing back.
-	// If duration is valid, apply fix for Chrome's WebM duration bug.
-	// Creates the preview and blob url
-	getRecording() {
+	/**
+	 *
+	 * @returns A promise containing the preview and url
+	 */
+	getAudio() {
 		const att = this.props.att;
 		let blob = base64ToBlob(att.val, att.mime);
 		return (
@@ -88,7 +109,7 @@ export default class Attachment extends React.Component {
 			}));
 	}
 
-	// creates a preview fron an audio
+	// Creates a preview (for showing bars)
 	createPreview(audio) {
 		const data = audio.getChannelData(0);
 		// Number of amplitude bars in preview.
@@ -192,6 +213,8 @@ export default class Attachment extends React.Component {
 			url = sanitizeUrl(this.props.downloadUrl);
 			helperFunc = null;
 		}
+
+		// Here abstract the download widget out for code readablity
 		const downloadWidget = (
 			<>
 				<i className="material-icons">file_download</i>{" "}
@@ -215,17 +238,21 @@ export default class Attachment extends React.Component {
 		const isAudio = this.props.att.mime.includes("audio");
 		return (
 			<div className="attachment">
-				{/* ُ Show a new audio player with new duration */}
+				{/* When the attachment is an audio show audio player */}
 				{isAudio && (
 					<div>
+						{/* Until audio preparation is done show a dummy audio player with a loader */}
 						{this.state.duration === null && this.state.preparingAudio && (
 							<AudioPlayer
 								duration={null}
 								src={this.state.src}
 								preview={this.state.preview}
+								// I added this props to AudioPlayer for showing a spinner instead of play button
+								// this props is passed to it
 								audioLoading={this.state.preparingAudio}
 							/>
 						)}
+						{/* Here render AudioPlayer again to show the new duration when the audio is prepared*/}
 						{this.state.duration !== null && !this.state.preparingAudio && (
 							<AudioPlayer
 								duration={this.state.duration}
@@ -234,6 +261,11 @@ export default class Attachment extends React.Component {
 								audioLoading={this.state.preparingAudio}
 							/>
 						)}
+
+						{/* While showing audio player also show a downloader
+							 because originally the file was an attachment not a voice
+							 record 
+		 				*/}
 						{downloadLink}
 					</div>
 				)}

@@ -4,6 +4,14 @@ import Attachment from "./attachment.jsx";
 
 import { Drafty } from "tinode-sdk";
 
+/**
+ * This component is just a wrapper over attachment.
+ * It only gives the attachment props that it needs
+ *
+ * @param {Object} props
+ * @returns
+ */
+
 function AttachmentWithAudioPlayer({
 	att,
 	tinode,

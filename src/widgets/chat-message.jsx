@@ -146,6 +146,7 @@ class BaseChatMessage extends React.PureComponent {
 						return;
 					}
 					attachments.push(
+						// Use the new Attachment component which also renders an audio player
 						<AttachmentWithAudioPlayer
 							tinode={this.props.tinode}
 							progress={this.state.progress}
