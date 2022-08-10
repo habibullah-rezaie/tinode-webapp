@@ -2697,6 +2697,11 @@ ul.tabbar li.active > a {
 	font-size: large;
 }
 
+/* a tiny change I brought in here:
+	removed the align-items: center
+	in order to align the play button with 
+	the preview bars
+*/
 .audio-player {
 	display: flex;
 }
@@ -2733,6 +2738,9 @@ ul.tabbar li.active > a {
 	color: #666c;
 }
 
+/*****************************/
+/* TabibVisit buttons style  */
+/*****************************/
 .tabibBtns {
 	width: 100%;
 	background-color: white;
@@ -2787,6 +2795,10 @@ ul.tabbar li.active > a {
 	font-size: 1rem;
 }
 
+/*****************************/
+/* End of TabibVisit Styles  */
+/*****************************/
+
 /*
  Mobile styles.
  */
@@ -2825,6 +2837,9 @@ ul.tabbar li.active > a {
 	}
 }
 
+/* These two media queries are here to
+	make the TabibVisit buttons be more responsive
+*/
 @media (max-width: 500px) {
 	.tabibBtns {
 		font-size: 0.7rem;
@@ -2849,6 +2864,7 @@ ul.tabbar li.active > a {
 	}
 }
 
+/* This the spinner I'm showing when the audio is not ready in AudioPlayer */
 @keyframes spinner-border {
 	to {
 		-webkit-transform: rotate(360deg);
