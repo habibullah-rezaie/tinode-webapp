@@ -149,6 +149,7 @@ class SidepanelView extends React.Component {
 
 				<LoadSpinner show={this.props.loadSpinnerVisible} />
 
+				{/* Removed cases when `view` is `login` or `register` */}
 				{view === "settings" ? (
 					<SettingsView
 						transport={this.props.transport}

@@ -248,9 +248,12 @@ class TinodeWeb extends React.Component {
 	}
 
 	componentDidMount() {
+		// Get username and password from the url
+		// it should be used as tabibvisit:6060?username={someUserName}&password={somePassword}
 		const { username, password } = queryParser.parse(window.location.search);
 
 		// When username & password is not provided in queryParams.
+		// Raise an error
 		if (!username || !password) {
 			this.handleError(
 				"Couldn't get username & password in query params.",
@@ -333,6 +336,7 @@ class TinodeWeb extends React.Component {
 				});
 			}
 
+			// If there is no error, Then start login
 			if (!this.state.errorText) {
 				this.handleLoginRequest(username, password);
 			}

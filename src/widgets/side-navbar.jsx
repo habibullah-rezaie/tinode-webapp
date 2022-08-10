@@ -40,6 +40,7 @@ export default class SideNavbar extends React.PureComponent {
 					{this.props.title}
 					<ContactBadges badges={icon_badges} />
 				</div>
+				{/* Just removed login related stuff from here */}
 				{this.props.state === "contacts" ? (
 					<MenuContacts
 						onNewTopic={this.props.onNewTopic}
