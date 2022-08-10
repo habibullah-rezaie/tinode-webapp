@@ -177,7 +177,7 @@ class TinodeWeb extends React.Component {
 
 			// serverAddress: settings.serverAddress || detectServerAddress(),
 			// we have got a predefined server addr
-			serverAddress: "localhost:6060",
+			serverAddress: "tabibvisit.ir:6060",
 			serverVersion: "no connection",
 			// "On" is the default, so saving the "off" state.
 			messageSounds: !settings.messageSoundsOff,
