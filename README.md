@@ -1,5 +1,7 @@
 # Tinode Web
 
+## Note, This is a cusomization of Original Tinode
+
 ## Briefing
 
 Single-page web chat application for [Tinode](https://github.com/tinode/chat/). The app is built on
